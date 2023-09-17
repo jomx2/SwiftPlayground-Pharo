@@ -1,0 +1,31 @@
+| input NoOfGrades grades sum max min avg i grade |
+
+input := stdin.
+Transcript show: 'Enter Number of grades: '.
+Transcript flush.
+NoOfGrades := input nextLine asInteger.
+grades := Array new: NoOfGrades.
+
+1 to: NoOfGrades do: [:i |
+    Transcript show: 'Grade ', (i) printString, ': '.
+    Transcript flush.
+    grade := input nextLine asInteger.
+    grades at: i put: grade].
+
+sum := 0.
+max := grades at: 1.
+min := grades at: 1.
+
+1 to: grades size do: [:i |
+    | grade |
+    grade := grades at: i.
+    sum := sum + grade.
+    min := min min: grade.
+    max := max max: grade].
+
+avg := sum asFloat / NoOfGrades asFloat.
+
+
+Transcript cr; show: 'Average: ', avg asString; cr.
+Transcript show: 'Maximum Grade: ', max printString; cr.
+Transcript show: 'Minimum Grade: ', min printString; cr.
